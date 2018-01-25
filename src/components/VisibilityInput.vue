@@ -17,7 +17,6 @@
     <button class="button is-danger is-focused" @click="deleteCompleted()">Delete All completed item</button>
   </div>
 </template>
-
 <script>
 import { store } from '@/store'
 import { mapActions, mapGetters } from 'vuex'
