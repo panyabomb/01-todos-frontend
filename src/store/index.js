@@ -37,12 +37,12 @@ export const store = new Vuex.Store({
       }
       localStorage.setItem('panyadata', JSON.stringify(state.todos))
     },
-    STORAGE_LOAD (state, storagetodata) {
+    LOCALSTORAGE_TO_SHOW_ON_WEB (state, storagetodata) {
       state.todos = storagetodata
     }
   },
   actions: {
-    buildStorage ({state}) {
+    buildLocalStorage ({state}) {
       localStorage.setItem('panyadata', JSON.stringify(state.todos))
     },
     addTodo ({commit}, title) {
@@ -60,10 +60,10 @@ export const store = new Vuex.Store({
     deleteCompleted ({commit}) {
       commit('DELETETE_COMPLETED')
     },
-    storageLoad ({commit}) {
+    LocalStorageToShowOnWeb ({commit}) {
       var storagetodata = localStorage.getItem('panyadata')
       if (storagetodata != null) {
-        commit('STORAGE_LOAD', JSON.parse(storagetodata))
+        commit('LOCALSTORAGE_TO_SHOW_ON_WEB', JSON.parse(storagetodata))
       }
     }
   },

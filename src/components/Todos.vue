@@ -45,13 +45,13 @@ export default {
     ...mapGetters(['todos', 'visibility'])
   },
   methods: {
-    ...mapActions(['removeTodo', 'changeComplete', 'deleteCompleted', 'storageLoad', 'save'])
+    ...mapActions(['removeTodo', 'changeComplete', 'deleteCompleted', 'LocalStorageToShowOnWeb', 'buildLocalStorage'])
   },
   created () {
     if (localStorage.getItem('panyadata') !== null) {
-      this.storageLoad()
+      this.LocalStorageToShowOnWeb()
     } else {
-      this.buildStorage()
+      this.buildLocalStorage()
     }
   }
   // watch: {
