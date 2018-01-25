@@ -14,12 +14,13 @@
         <span>Completed</span>
       </b-radio-button>
     </b-field>
+    <button class="button is-danger is-focused" @click="deleteCompleted()">Delete All completed item</button>
   </div>
 </template>
 
 <script>
 import { store } from '@/store'
-
+import { mapActions } from 'vuex'
 export default {
   computed: {
     visibility: {
@@ -30,6 +31,9 @@ export default {
         store.dispatch('changeVisibility', newValue)
       }
     }
+  },
+  methods: {
+    ...mapActions(['removeTodo', 'changeComplete', 'deleteCompleted'])
   }
 }
 </script>

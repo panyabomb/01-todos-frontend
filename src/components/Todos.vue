@@ -2,7 +2,7 @@
   <div>
     <div v-for="(todo, index) in todos" :key="todo.title" v-if="visibility === 'all'">
       <b-field class="is-pulled-left">
-        <b-checkbox size="is-large" @input="changeComplete({index,completed:$event})">
+        <b-checkbox size="is-large" @input="changeComplete({index,completed:$event})" :value = "todo.completed">
         <strike v-if="todo.completed">{{ todo.title }}</strike>
         <div v-else>{{ todo.title }} </div>
         </b-checkbox>
@@ -25,7 +25,7 @@
     <div v-for="(todo, index) in todos" :key="todo.title" v-if="visibility === 'completed'">
       <div class="" v-if="todo.completed === true">
       <b-field class="is-pulled-left">
-        <b-checkbox size="is-large" @input="changeComplete({index,completed:$event})">
+        <b-checkbox size="is-large" @input="changeComplete({index,completed:$event})" :value = "true">
         <strike v-if="todo.completed">{{ todo.title }}</strike>
         <div v-else>{{ todo.title }} </div>
         </b-checkbox>
@@ -33,8 +33,9 @@
       <a class="delete is-pulled-right" @click="removeTodo(index)"></a>
       <div class="is-clearfix"></div>
     </div>
-    </div>
   </div>
+  <!-- <button class="button is-danger is-focused" @click="deleteCompleted()">Delete All completed item</button> -->
+</div>
 </template>
 
 <script>
@@ -45,7 +46,7 @@ export default {
     ...mapGetters(['todos', 'visibility'])
   },
   methods: {
-    ...mapActions(['removeTodo', 'changeComplete'])
+    ...mapActions(['removeTodo', 'changeComplete', 'deleteCompleted'])
   }
 }
 </script>
