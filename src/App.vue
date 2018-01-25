@@ -6,11 +6,23 @@
 
 <script>
 import TodosApp from '@/components/TodosApp'
-
+import { mapGetters } from 'vuex'
 export default {
+  data () {
+    return {
+    }
+  },
+  computed: {
+    ...mapGetters(['todos', 'visibility'])
+  },
   name: 'app',
   components: {
     TodosApp
   }
+  // watch: {
+  // //   todos: function (newval, oldval) {
+  // //     localStorage.setItem('datatest', JSON.stringify(newval))
+  // //   }
+  // }
 }
 </script>

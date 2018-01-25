@@ -40,13 +40,24 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-
 export default {
   computed: {
     ...mapGetters(['todos', 'visibility'])
   },
   methods: {
-    ...mapActions(['removeTodo', 'changeComplete', 'deleteCompleted'])
+    ...mapActions(['removeTodo', 'changeComplete', 'deleteCompleted', 'storageLoad', 'save'])
+  },
+  created () {
+    if (localStorage.getItem('panyadata') !== null) {
+      this.storageLoad()
+    } else {
+      this.buildStorage()
+    }
   }
+  // watch: {
+  //   todos: function (newval, oldval) {
+  //     localStorage.setItem('panyadata', JSON.stringify(newval))
+  //   }
+  // }
 }
 </script>
