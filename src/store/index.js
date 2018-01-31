@@ -39,6 +39,10 @@ export const store = new Vuex.Store({
     },
     LOCALSTORAGE_TO_SHOW_ON_WEB (state, storagetodata) {
       state.todos = storagetodata
+    },
+    SORT_TO (state, payload) {
+      state.todos.splice(payload.newIndex, 0, state.todos.splice(payload.oldIndex, 1)[0])
+      localStorage.setItem('panyadata', JSON.stringify(state.todos))
     }
   },
   actions: {
@@ -65,6 +69,9 @@ export const store = new Vuex.Store({
       if (storagetodata != null) {
         commit('LOCALSTORAGE_TO_SHOW_ON_WEB', JSON.parse(storagetodata))
       }
+    },
+    sortTo ({commit}, payload) {
+      commit('SORT_TO', payload)
     }
   },
   getters: {
